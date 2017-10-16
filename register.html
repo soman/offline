@@ -1,0 +1,15 @@
+<form name="registerForm" ng-submit="regSubmit()">
+  <div class="body_central_wrapper">
+    <div class="content">
+      <div class="logo_box">
+        <img src="images/amur_logo.png" alt="">
+      </div>
+      <div class="form_box">
+          <input type="text" ng-model="user_id" name="user_id" placeholder="Enter your id" class="tbox" required="">
+          <input type="submit" value="SUBMIT" class="sub_btn">
+          <div class="msg no-conn ng-hide" >There is no Internet Connection!</div>
+          <div class="msg wrong-id ng-hide" >You have entered wrong Saleforce ID!</div>
+      </div>
+    </div>
+  </div>
+</form>

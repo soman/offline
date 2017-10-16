@@ -1,0 +1,16 @@
+<form name="partnerForm" ng-submit="partnerSubmit()">
+<div class="body_central_wrapper">
+  <div class="content">
+    <div class="logo_box">
+      <img src="images/amur_logo.png" alt="">
+    </div>
+    <div class="form_box">
+      <select name="partner_id" id="partner_id" ng-model="partner_id" class="amur_list" required>
+        <option value="" >--Select Partner--</option>
+        <option ng-repeat="partner in sett_partners" value="{{partner.Id}}" >{{partner.pname}}</option>
+      </select>
+      <input type="submit" value="SUBMIT" class="sub_btn">
+    </div>
+  </div>
+</div>
+</form>

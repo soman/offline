@@ -1,0 +1,105 @@
+<form name="finCalForm" class="finance-cal-form" ng-submit="calSubmit()">
+<div class="body_wrapper_outer">
+  <!-- Start Header -->
+  <div class="header">
+    <div class="header_wrapper">
+      <div class="header_left">
+        <div class="logo_box">
+          <a href="/offline/"><img src="images/amur_logo.png" alt=""></a>
+        </div>
+      </div>
+      <div class="header_right">
+          <div class="new_partner"><a href="/offline/#/partner">CHOOSE NEW PARTNER</a></div>
+          <div class="clac">Finance Calculator</div>
+      </div>
+    </div>
+  </div>
+  <!-- End Header -->
+
+  <!-- Start body content -->
+  <div class="body_content">
+    <div class="form_box">
+      <form action="" method="get" accept-charset="utf-8">
+        <div class="form_left">
+          <div class="form_line">
+            <label>Finance Amount</label>
+            <input class="tbox" id="aefAmount" type="number" name="financeAmount" ng-model="financeAmount" ng-change="mainCalculator()" ng-pattern="/^[0-9]{1,7}$/" required>
+            <div ng-messages="finCalForm.financeAmount.$error" ng-show="finCalForm.financeAmount.$touched || finCalForm.$submitted">
+              <div ng-message="required">This field is required</div>
+            </div>
+            <label></label><span class="frange"> Range: {{current_prtner_info['finance_minimum']}} - {{current_prtner_info['finance_maximum']}}</span>
+          </div>
+          <div class="form_line">
+            <label>Deal Type</label>
+            <select id="dealtype" class="amur_list" name="dealType" ng-model="dealType" ng-change="mainCalculator()" required>
+              <option value="" >--Select Deal Type--</option>
+              <option ng-repeat="deal_type in deal_types" value="{{deal_type.Id}}" >{{deal_type.Type_name}}</option>
+            </select>
+
+            <!-- <select id="dealtype" class="amur_list" name="dealType" ng-model="dealType" ng-change="mainCalculator()" required ng-init="dealType = deal_types[0]" ng-options="item as item.Type_name for item in deal_types track by item.Id">
+            </select> -->
+
+            <div ng-messages="finCalForm.dealType.$error" ng-show="finCalForm.dealType.$touched || finCalForm.$submitted">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </div>
+          <div class="form_line">
+            <label>First Name</label>
+            <input type="text" class="tbox" name="firstName" ng-model="firstName" required />
+            <div ng-messages="finCalForm.firstName.$error" ng-show="finCalForm.firstName.$touched || finCalForm.$submitted">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </div>
+          <div class="form_line">
+            <label>Last Name</label>
+            <input type="text" class="tbox" name="lastName" ng-model="lastName" required />
+            <div ng-messages="finCalForm.lastName.$error" ng-show="finCalForm.lastName.$touched || finCalForm.$submitted">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </div>
+          <div class="form_line">
+            <label>Phone</label>
+            <input type="text" class="tbox" name="phoneNumber" ng-model="phoneNumber" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required/>
+            <div ng-messages="finCalForm.phoneNumber.$error" ng-show="finCalForm.phoneNumber.$touched || finCalForm.$submitted">
+              <div ng-message="required">This field is required</div>
+              <div ng-message="pattern">Must be a valid 10 digit phone number</div>
+            </div>
+          </div>
+          <div class="form_line">
+            <label>Email</label>
+            <input type="email" class="tbox" name="email" ng-model="email" required />
+            <div ng-messages="finCalForm.email.$error" ng-show="finCalForm.email.$touched || finCalForm.$submitted">
+              <div ng-message="required">This field is required</div>
+              <div ng-message="email">Your email address is invalid</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form_right">
+
+
+        </div>
+      </form>
+    </div>
+
+    <div class="bottom_content">
+      <p>
+        All applicants' and their principals' and all guarantors' credit will be reviewed before AEF offers a financing contract. The payment amounts provided by this Quote Tool are not an offer and may be changed after the full credit review
+      </p>
+
+      <div class="form_box" align="center">
+        <input type="submit" value="SUBMIT" ng-disabled="isDisabled" class="sub_btn">
+      </div>
+
+    </div>
+
+
+  </div>
+  <!-- End body content -->
+
+  <div class="footer">
+    <p>&copy; 2017, Amur Equipment Finance. All Rights Reserved.</p>
+  </div>
+</div>
+</form>
+
